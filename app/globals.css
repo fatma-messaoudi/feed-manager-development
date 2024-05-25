@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Customize scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Track background color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffdb3c; /* Thumb color */
+  border-radius: 3px; /* Round the corners of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333; /* Change thumb color on hover */
+}
+
+/* Change selection color */
+::selection {
+  background-color: #000000; /* Change background color when selected */
+  color: #fff; /* Change text color when selected */
+}
+
+
+
+
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.typing-animation {
+    white-space: nowrap; /* Prevents line breaks */
+    overflow: hidden; /* Ensures the text is hidden when it's not written out yet */
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative; /* Make the cursor position relative to the text */
+    animation: typing 2s steps(40, end) forwards; /* Apply the typing animation */
+  }
+
+  .typing-animation::after {
+    content: "|"; /* The cursor symbol */
+    display: inline-block;
+    animation: blinkCursor 1s infinite; /* Blinking animation for the cursor with a delay */
+  }
+
+  @keyframes typing {
+    from {
+      width: 0; /* Start with 0 width, as if nothing is written */
+    }
+    to {
+      width: 100%; /* End with full width, as if the entire text is written */
+    }
+  }
+
+  @keyframes blinkCursor {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .text-container {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1s; /* Delay to start animation after 5 seconds */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 2;
+    }
+  }
+  .slider{
+    height: 250px;
+    margin:auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+  }
+  .slide-track{display: flex;
+  width: calc(250px*18);
+  animation: scroll 60s linear infinite ;
+
+}
+
+.slide-track:hover{
+  animation-play-state: paused;
+}
+
+@keyframes scroll{
+
+0%{transform: translateX(0);}
+100%{transform: translateX(calc(-250px*10));}
+
+}
+
+.slide{
+
+  height: 150px;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  perspective: 100px;
+}
+.imageslide{
+  width: 100%;
+  transition: transform 0.1s ease;
+}
+
+
+.imageslide:hover{
+  transform: translateZ(20px);
+}
+.slider::before,
+.slider::after{
+ 
+  content: '';
+  height: 100%;
+  position: absolute;
+  width: 30%;
+  z-index: 2;
+}
+.slider::before{
+  left: 0;
+  top: 0;
+
+}
+.slider::after{
+  right: 0;
+  top: 0;
+  transform: rotateZ(360deg);
+}   
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-button {
+  animation: moveUpDown 2s ease-in-out infinite;
+  
+  
+}
+.center {
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+.delayed-visibility {
+  animation: fadeIn 0.5s ease-in-out forwards;
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animated-element {
+  transition: transform 0.5s ease;
+}
+
+.pop {
+  transform: scale(1.1);
+}
+.animated-element {
+  transition: transform 0.5s ease;
+}
+
+.pop {
+  animation: popAnimation 0.5s forwards;
+}
+
+@keyframes popAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(22, 22, 22);
+  border-radius: 10px;
+  padding: 20px;
+  width: 450px; /* Adjust the width as needed */
+  height: 320px ;
+  max-width: 90%;
+  z-index: 9999;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.664);
+  z-index: 9998;
+}
+
+.modal-content {
+  text-align: left;
+}
